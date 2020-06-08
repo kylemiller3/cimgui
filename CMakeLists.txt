@@ -20,13 +20,6 @@ else (IMGUI_STATIC)
     add_library(cimgui SHARED ${IMGUI_SOURCES})
 endif (IMGUI_STATIC)
 
-target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
-if (WIN32)
-    target_compile_definitions(cimgui PUBLIC IMGUI_IMPL_API="extern \"C\" __declspec\(dllexport\)")
-else (WIN32)
-    target_compile_definitions(cimgui PUBLIC IMGUI_IMPL_API="extern \"C\" ")
-endif (WIN32)
-
 target_include_directories(cimgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(cimgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/imgui)
 set_target_properties(cimgui PROPERTIES PREFIX "")
